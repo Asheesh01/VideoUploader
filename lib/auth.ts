@@ -47,8 +47,23 @@ export const authOptions: NextAuthOptions = {
                 token.id=user.id;
             }
             return token
+        },
+        async session({session,user,token}){
+            if(session.user){
+              session.user.id=token.id as string
+            }
+            return session
         }
-    }
+    },
+    pages:{
+        signIn:"/login",
+        error:"/login"
+    },
+    session:{
+        strategy:"jwt",
+        maxAge:30*24*60*60,
+    },
+    secret:process.env.NEXTAUTH_SECRET
 
 
 
