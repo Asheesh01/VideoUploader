@@ -1,5 +1,6 @@
 import User from "@/app/models/user";
 import { connectToDatabase } from "@/lib/db";
+import { Video } from "@imagekit/next";
 import { error } from "console";
 import { NextRequest, NextResponse } from "next/server";
 
